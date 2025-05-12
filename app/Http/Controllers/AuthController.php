@@ -80,6 +80,6 @@ class AuthController extends Controller
 
         // Log::info('User logged out: ' . $userName); // Contoh logging
 
-        return redirect()->route('login.form')->with('status', 'Anda telah berhasil keluar.');
+        return redirect()->route('login')->with('status', 'Anda telah berhasil keluar.');
     }
 }
