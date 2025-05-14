@@ -11,6 +11,11 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> sesuaikan jika pakai Tailwind, Bootstrap, dll --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
     <!-- Scripts & Styles (Gunakan Vite atau Mix) -->
     @vite(['resources/css/app.css', 'resources/js/app.js']) 
     {{-- Pastikan path CSS/JS sesuai dengan setup Anda --}}
@@ -22,7 +27,7 @@
     <div class="min-h-screen bg-gray-50 dark:bg-gray-900"> {{-- Sesuaikan background --}}
 
         {{-- Include Header Publik --}}
-        @include('layouts.partials.public._header') 
+        {{-- @include('layouts.partials.public._header')  --}}
 
         {{-- Include Navigasi Utama (jika terpisah dari header) --}}
         {{-- @include('layouts.partials.public._navigation') --}}
@@ -34,7 +39,7 @@
         </main>
 
         {{-- Include Footer Publik --}}
-        @include('layouts.partials.public._footer')
+        {{-- @include('layouts.partials.public._footer') --}}
 
     </div>
 

@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0; /* Tambahan penting */
+    width: 100%;
+    background: rgba(26, 32, 44, 0.9);
+    padding: 1rem 2rem;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    font-family: 'Inter', sans-serif;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Tambahan penting agar isi tersebar */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+    margin-right: auto; /* Tambahkan ini untuk pastikan dia ke kiri */
+}
+
+.navbar-brand:hover {
+    color: #ffffff; /* Tetap putih saat disentuh */
+    text-decoration: none;
+}
+
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.navbar-menu li a {
+    color: #e2e8f0;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    padding-bottom: 4px;
+    position: relative;
+}
+
+.navbar-menu li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0%;
+    background-color: #f6ad55;
+    transition: width 0.3s ease;
+}
+
+.navbar-menu li a:hover {
+    color: #f6ad55;
+}
+
+.navbar-menu li a:hover::after {
+    width: 100%;
+}

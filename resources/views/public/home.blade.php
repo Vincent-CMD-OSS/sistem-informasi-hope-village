@@ -14,10 +14,13 @@
 
     {{-- Include Sections --}}
     
+    @include('public.partials._navbar')
     @include('public.partials._hero')
     @include('public.partials._profil')
     @include('public.partials._galeri')
     @include('public.partials._operasional')
+    @include('public.partials._kegiatan')
+    @include('public.partials._kebutuhan')
     @include('public.partials._donasi')
     @include('public.partials._kontak')
     {{-- Include section lain jika ada --}}
