@@ -2,33 +2,42 @@
 
 .operasional-section {
     position: relative;
-    padding: 80px 0;
-    background-color: #ffffff; /* Latar belakang utama section jika blob tidak menutup semua */
-    overflow: hidden; /* Penting untuk blob agar tidak menyebabkan scroll */
+    min-height: 100vh; /* PENYESUAIAN: Tentukan tinggi minimal section */
+    /* Pertimbangkan 110vh jika konten Anda sangat banyak dan ingin lebih banyak ruang */
+    width: 100%; /* Pastikan lebar penuh */
+    display: flex; /* PENYESUAIAN: Untuk memusatkan .container di dalamnya */
+    align-items: center; /* Pusatkan .container secara vertikal */
+    justify-content: center; /* Pusatkan .container secara horizontal */
+    padding: 120px 0; /* Padding internal yang sudah ada, sesuaikan jika perlu */
+    background-color: #ffffff;
+    overflow: hidden;
 }
 
 .operasional-background-blob {
     position: absolute;
-    top: -10%; /* Sesuaikan untuk posisi vertikal */
-    right: -20%; /* Sesuaikan untuk posisi horizontal */
-    width: 70vw; /* Lebar blob, bisa lebih besar dari viewport */
-    height: 120vh; /* Tinggi blob, bisa lebih besar dari viewport */
-    background-color: #e0f7fa; /* Warna biru muda dari desain (perkiraan) */
-    border-radius: 45% 55% 60% 40% / 50% 40% 60% 50%; /* Ini untuk bentuk blob organik, perlu eksperimen! */
-    transform: rotate(15deg); /* Sedikit rotasi */
-    z-index: 1;
-    opacity: 0.7; /* Sedikit transparan jika perlu */
+    top: -15%; /* Sedikit penyesuaian mungkin diperlukan untuk posisi blob */
+    right: -25%;/* Sedikit penyesuaian mungkin diperlukan untuk posisi blob */
+    width: 75vw; /* Mungkin sedikit lebih besar agar proporsional dengan section yang lebih tinggi */
+    height: 125vh;/* Mungkin sedikit lebih besar agar proporsional dengan section yang lebih tinggi */
+    background-color: #e0f7fa;
+    border-radius: 45% 55% 60% 40% / 50% 40% 60% 50%;
+    transform: rotate(15deg);
+    z-index: 1; /* Di belakang konten tapi di atas background section utama */
+    opacity: 0.6; /* Sedikit dikurangi agar tidak terlalu dominan */
 }
 
-/* Jika .container dari bootstrap, mungkin tidak perlu style khusus selain position & z-index */
-/* .operasional-section .container {
-    position: relative;
-    z-index: 2;
-} */
+/* Kontainer akan menjadi flex item dan terpusat */
+.operasional-section .container {
+    position: relative; /* Untuk stacking context jika ada elemen absolute di dalamnya */
+    z-index: 2; /* Pastikan konten di atas blob */
+    width: 100%; /* Bootstrap default, pastikan tetap ada */
+}
+
+/* ... (CSS untuk .operasional-content-left, .operasional-info-list, .operasional-content-right tetap sama seperti sebelumnya) ... */
 
 .operasional-content-left .operasional-pre-title {
     font-size: 0.9rem;
-    color: #6c757d; /* Warna abu-abu untuk pre-title */
+    color: #6c757d;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -37,13 +46,13 @@
     display: inline-block;
     width: 30px;
     height: 2px;
-    background-color: var(--primary-color, #4e73df); /* Warna garis dari pre-title */
+    background-color: var(--primary-color, #4e73df);
 }
 
 .operasional-content-left .operasional-main-title {
-    font-size: 2.8rem; /* Ukuran judul utama */
+    font-size: 2.8rem;
     font-weight: 700;
-    color: #2c3e50; /* Warna biru tua/hitam untuk judul */
+    color: #2c3e50;
     line-height: 1.2;
 }
 
@@ -51,83 +60,91 @@
     flex-shrink: 0;
     width: 60px;
     height: 60px;
-    border-radius: 12px; /* Rounded square */
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.8rem; /* Ukuran ikon */
-    color: #fff; /* Warna ikon putih */
+    font-size: 1.8rem;
+    color: #fff;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .operasional-info-list .icon-wrapper.jam-operasional {
-    background-color: #ffca28; /* Kuning dari desain */
+    background-color: #ffca28;
 }
 
 .operasional-info-list .icon-wrapper.kunjungan {
-    background-color: #ff7043; /* Oranye dari desain */
+    background-color: #ff7043;
 }
 
 .operasional-info-list .icon-wrapper.lokasi {
-    background-color: #00796b; /* Biru tua/teal dari desain (perkiraan) */
+    background-color: #00796b;
 }
 
 .operasional-info-list .item-title {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #34495e; /* Warna judul item */
+    color: #34495e;
     margin-bottom: 0.3rem;
 }
 
 .operasional-info-list .item-text {
     font-size: 0.95rem;
-    color: #7f8c8d; /* Warna teks deskripsi */
+    color: #7f8c8d;
     line-height: 1.6;
 }
 
 .operasional-content-right .operasional-image-card {
     background-color: #fff;
-    border-radius: 20px; /* Rounded corner besar untuk card */
+    border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Agar gambar mengikuti border-radius card */
-    padding: 1.2rem; /* Padding dalam card */
+    overflow: hidden;
+    padding: 1.2rem;
 }
 
 .operasional-content-right .operasional-image-card img {
-    border-radius: 12px; /* Rounded corner untuk gambar di dalam card */
+    border-radius: 12px;
     width: 100%;
     height: auto;
-    object-fit: cover; /* Atau contain, tergantung gambar */
-    /* Untuk gambar seperti di desain, mungkin perlu tinggi spesifik jika tidak proporsional */
-    /* max-height: 400px; */
+    object-fit: cover;
 }
 
 .operasional-content-right .operasional-image-card .image-caption {
     font-size: 1.1rem;
     font-weight: 600;
     color: #34495e;
-    padding-top: 1rem; /* Jarak dari gambar ke caption */
-    text-align: left; /* Sesuai desain */
+    padding-top: 1rem;
+    text-align: left;
 }
+
 
 /* Responsive Adjustments */
 @media (max-width: 991.98px) { /* Tablet */
+    .operasional-section {
+        padding: 100px 0; /* Padding untuk tablet */
+        min-height: 0; /* Atau min-height yang lebih kecil, misal 70vh, atau biarkan konten menentukan tinggi */
+                       /* Jika min-height: 0; atau auto, maka display:flex tidak akan memaksakan centering vertikal di 100vh */
+                       /* Untuk section yang lebih pendek, mungkin display: block; lagi lebih baik */
+    }
     .operasional-content-left .operasional-main-title {
         font-size: 2.4rem;
     }
     .operasional-background-blob {
         width: 90vw;
         right: -30%;
-        opacity: 0.6;
+        opacity: 0.5; /* Disesuaikan dengan opacity baru di atas */
+        height: 110vh; /* Sesuaikan dengan tinggi section jika perlu */
     }
     .operasional-content-right .operasional-image-card {
-        margin-top: 2rem; /* Beri jarak jika kolom stack */
+        margin-top: 2rem;
     }
 }
 
 @media (max-width: 767.98px) { /* Mobile */
     .operasional-section {
-        padding: 60px 0;
+        padding: 80px 0; /* Padding untuk mobile */
+        min-height: 0; /* Kosongkan min-height agar tinggi ditentukan konten + padding */
+        display: block; /* Kembalikan ke block agar tidak ada centering vertikal aneh di mobile */
     }
     .operasional-content-left .operasional-main-title {
         font-size: 2rem;
@@ -145,18 +162,12 @@
         font-size: 0.9rem;
     }
     .operasional-background-blob {
-        /* Sembunyikan atau sederhanakan blob di mobile jika terlalu mengganggu */
-        /* display: none; */
         width: 120vw;
         height: 100vh;
         top: 0;
         right: -50%;
         border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
         transform: rotate(0deg);
-        opacity: 0.5;
-    }
-    .operasional-image-card {
-        /* Jika kolom tidak stack, hapus margin-top ini */
-        /* Jika kolom stack, ini akan jadi atas bawah */
+        opacity: 0.4; /* Disesuaikan */
     }
 }

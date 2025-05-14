@@ -1,10 +1,10 @@
 <!-- resources/views/public/partials/_galeri.blade.php -->
-<section id="galeri" class="scrollspy-section padding-large bg-light">
+<section id="galeri" class="scrollspy-section padding-large" style="padding-top: 100px; padding-bottom: 100px;">
     <div class="container">
         <div class="row">
            <div class="col-md-12">
                 {{-- Kita akan beri class khusus pada div ini untuk styling yang lebih terisolasi --}}
-                <div class="galeri-section-header text-center mb-5 pb-3">
+                <div class="galeri-section-header text-center mb-5 pb-3" style="margin-top: 5%;">
                     <p class="galeri-pre-title mb-2">
                         <span>Dokumentasi kegiatan</span>
                     </p>
@@ -22,7 +22,7 @@
                 <div class="galeri-item h-100 d-flex flex-column"> {{-- Tambahkan h-100 dan d-flex --}}
                     <figure class="galeri-image flex-grow-1"> {{-- flex-grow-1 untuk gambar mengisi ruang --}}
                         {{-- PASTIKAN NAMA FILE GAMBAR SESUAI DENGAN YANG ADA DI public/images/ --}}
-                        <img src="{{ asset('images/fotohope.jpeg') }}" alt="Hope Village Media Team" class="img-fluid rounded shadow">
+                        <img src="{{ asset('assets/images/Gambar13.jpg') }}" alt="Hope Village Media Team" class="img-fluid rounded shadow">
                         <div class="date-badge">
                             <span>05/05/2025</span>
                         </div>
@@ -41,7 +41,7 @@
                     <div class="col-12 mb-4">
                         <div class="galeri-item-small d-flex align-items-center"> {{-- Tambahkan align-items-center --}}
                             <figure class="galeri-image-small me-3"> {{-- Kurangi margin jika perlu me-3 --}}
-                                <img src="{{ asset('images/Sarah.jpg') }}" alt="Sarah" class="img-fluid rounded shadow">
+                                <img src="{{ asset('assets/images/gambar11.jpg') }}" alt="Sarah" class="img-fluid rounded shadow">
                                 <div class="date-badge-small">
                                     <span>dd/mm/yyyy</span>
                                 </div>
@@ -56,7 +56,7 @@
                     <div class="col-12 mb-4">
                         <div class="galeri-item-small d-flex align-items-center">
                             <figure class="galeri-image-small me-3">
-                                <img src="{{ asset('images/siblings1.jpg') }}" alt="Siblings" class="img-fluid rounded shadow">
+                                <img src="{{ asset('assets/images/gambar11.jpg') }}" alt="Siblings" class="img-fluid rounded shadow">
                                 <div class="date-badge-small">
                                     <span>dd/mm/yyyy</span>
                                 </div>
@@ -71,7 +71,7 @@
                     <div class="col-12">
                         <div class="galeri-item-small d-flex align-items-center">
                             <figure class="galeri-image-small me-3">
-                                <img src="{{ asset('images/Marchel.jpg') }}" alt="Marchel" class="img-fluid rounded shadow">
+                                <img src="{{ asset('assets/images/Gambar12.jpg') }}" alt="Marchel" class="img-fluid rounded shadow">
                                 <div class="date-badge-small">
                                     <span>dd/mm/yyyy</span>
                                 </div>
@@ -86,7 +86,7 @@
             </div>
         </div>
 
-        <div class="row mt-5 pt-4"> {{-- Tambah padding top sedikit --}}
+        <div class="row mt-5 pt-4"  style="margin-top: 60px !important;"> {{-- Tambah padding top sedikit --}}
             <div class="col-12 text-center">
                 <a href="#" class="btn btn-accent btn-xlarge btn-rounded">Lihat Semua Galeri</a>
             </div>
