@@ -13,6 +13,7 @@
 <body>
 
     {{-- Include Sections --}}
+    
     @include('public.partials._hero')
     @include('public.partials._profil')
     @include('public.partials._galeri')
