@@ -14,7 +14,7 @@ use App\Http\Controllers\Admin\DonasiController;
 use App\Http\Controllers\Admin\IdentitasPantiController;
 
 // BAGIAN CONTROLLER USER
-use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\Public\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,12 +22,12 @@ use App\Http\Controllers\User\HomeController;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/backend', function () {
-    if (Auth::check()) { // Pastikan Auth sudah di-import
-        return redirect()->route('admin.dashboard');
-    }
-    return redirect()->route('login');
-});
+// Route::get('/', function () {
+//     if (Auth::check()) { // Pastikan Auth sudah di-import
+//         return redirect()->route('admin.dashboard');
+//     }
+//     return redirect()->route('login');
+// });
 
 // Grup Rute untuk Autentikasi Admin
 Route::controller(AuthController::class)->group(function () {
@@ -129,7 +129,4 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 
 
 
-
-// BAGIAN ROUTE USER 
-
-Route::get('/', [HomeController::class, 'index'])->name('beranda');
+Route::get('/', [HomeController::class, 'index'])->name('home'); 

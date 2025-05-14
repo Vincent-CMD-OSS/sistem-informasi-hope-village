@@ -1,0 +1,162 @@
+/* resources/css/sections/_operasional.css */
+
+.operasional-section {
+    position: relative;
+    padding: 80px 0;
+    background-color: #ffffff; /* Latar belakang utama section jika blob tidak menutup semua */
+    overflow: hidden; /* Penting untuk blob agar tidak menyebabkan scroll */
+}
+
+.operasional-background-blob {
+    position: absolute;
+    top: -10%; /* Sesuaikan untuk posisi vertikal */
+    right: -20%; /* Sesuaikan untuk posisi horizontal */
+    width: 70vw; /* Lebar blob, bisa lebih besar dari viewport */
+    height: 120vh; /* Tinggi blob, bisa lebih besar dari viewport */
+    background-color: #e0f7fa; /* Warna biru muda dari desain (perkiraan) */
+    border-radius: 45% 55% 60% 40% / 50% 40% 60% 50%; /* Ini untuk bentuk blob organik, perlu eksperimen! */
+    transform: rotate(15deg); /* Sedikit rotasi */
+    z-index: 1;
+    opacity: 0.7; /* Sedikit transparan jika perlu */
+}
+
+/* Jika .container dari bootstrap, mungkin tidak perlu style khusus selain position & z-index */
+/* .operasional-section .container {
+    position: relative;
+    z-index: 2;
+} */
+
+.operasional-content-left .operasional-pre-title {
+    font-size: 0.9rem;
+    color: #6c757d; /* Warna abu-abu untuk pre-title */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.operasional-content-left .operasional-pre-title .line {
+    display: inline-block;
+    width: 30px;
+    height: 2px;
+    background-color: var(--primary-color, #4e73df); /* Warna garis dari pre-title */
+}
+
+.operasional-content-left .operasional-main-title {
+    font-size: 2.8rem; /* Ukuran judul utama */
+    font-weight: 700;
+    color: #2c3e50; /* Warna biru tua/hitam untuk judul */
+    line-height: 1.2;
+}
+
+.operasional-info-list .icon-wrapper {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 12px; /* Rounded square */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem; /* Ukuran ikon */
+    color: #fff; /* Warna ikon putih */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.operasional-info-list .icon-wrapper.jam-operasional {
+    background-color: #ffca28; /* Kuning dari desain */
+}
+
+.operasional-info-list .icon-wrapper.kunjungan {
+    background-color: #ff7043; /* Oranye dari desain */
+}
+
+.operasional-info-list .icon-wrapper.lokasi {
+    background-color: #00796b; /* Biru tua/teal dari desain (perkiraan) */
+}
+
+.operasional-info-list .item-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #34495e; /* Warna judul item */
+    margin-bottom: 0.3rem;
+}
+
+.operasional-info-list .item-text {
+    font-size: 0.95rem;
+    color: #7f8c8d; /* Warna teks deskripsi */
+    line-height: 1.6;
+}
+
+.operasional-content-right .operasional-image-card {
+    background-color: #fff;
+    border-radius: 20px; /* Rounded corner besar untuk card */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Agar gambar mengikuti border-radius card */
+    padding: 1.2rem; /* Padding dalam card */
+}
+
+.operasional-content-right .operasional-image-card img {
+    border-radius: 12px; /* Rounded corner untuk gambar di dalam card */
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Atau contain, tergantung gambar */
+    /* Untuk gambar seperti di desain, mungkin perlu tinggi spesifik jika tidak proporsional */
+    /* max-height: 400px; */
+}
+
+.operasional-content-right .operasional-image-card .image-caption {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #34495e;
+    padding-top: 1rem; /* Jarak dari gambar ke caption */
+    text-align: left; /* Sesuai desain */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991.98px) { /* Tablet */
+    .operasional-content-left .operasional-main-title {
+        font-size: 2.4rem;
+    }
+    .operasional-background-blob {
+        width: 90vw;
+        right: -30%;
+        opacity: 0.6;
+    }
+    .operasional-content-right .operasional-image-card {
+        margin-top: 2rem; /* Beri jarak jika kolom stack */
+    }
+}
+
+@media (max-width: 767.98px) { /* Mobile */
+    .operasional-section {
+        padding: 60px 0;
+    }
+    .operasional-content-left .operasional-main-title {
+        font-size: 2rem;
+    }
+    .operasional-info-list .icon-wrapper {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        border-radius: 10px;
+    }
+    .operasional-info-list .item-title {
+        font-size: 1.1rem;
+    }
+    .operasional-info-list .item-text {
+        font-size: 0.9rem;
+    }
+    .operasional-background-blob {
+        /* Sembunyikan atau sederhanakan blob di mobile jika terlalu mengganggu */
+        /* display: none; */
+        width: 120vw;
+        height: 100vh;
+        top: 0;
+        right: -50%;
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        transform: rotate(0deg);
+        opacity: 0.5;
+    }
+    .operasional-image-card {
+        /* Jika kolom tidak stack, hapus margin-top ini */
+        /* Jika kolom stack, ini akan jadi atas bawah */
+    }
+}
