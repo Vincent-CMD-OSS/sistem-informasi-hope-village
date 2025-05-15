@@ -1,0 +1,452 @@
+/* public/css/public_profil_detail.css */
+/* Color variables for easy theme management */
+:root {
+    --primary-color: #4e73df;
+    --primary-color-light: #728eed;
+    --primary-color-dark: #3a5bd9;
+    --accent-color: #f6c23e;
+    --accent-color-light: #f8d06a;
+    --text-dark: #2e3d5c;
+    --text-medium: #5a6a85;
+    --text-light: #8997b1;
+    --bg-light: #f8f9fe;
+    --white: #ffffff;
+    --divider-color: rgba(0,0,0,0.08);
+    --shadow-small: 0 2px 15px rgba(0,0,0,0.05);
+    --shadow-medium: 0 5px 25px rgba(0,0,0,0.08);
+    --transition-speed: 0.3s;
+}
+
+/* Global styles for this page */
+.profil-detail-container {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--text-dark);
+    margin-bottom: 4rem;
+}
+
+/* Hero Section */
+.page-hero-section {
+    padding: 120px 0;
+    background-size: cover;
+    background-position: center center;
+    color: var(--white);
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%);
+    z-index: 1;
+}
+
+.page-hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.page-hero-section .page-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+}
+
+.page-hero-section .page-slogan {
+    font-size: 1.4rem;
+    font-weight: 300;
+    opacity: 0.95;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Content Sections */
+.profil-content-section {
+    padding: 60px 0;
+    position: relative;
+    border-bottom: 1px solid var(--divider-color);
+}
+
+.profil-content-section:last-child {
+    border-bottom: none;
+}
+
+.profil-content-section .section-header {
+    margin-bottom: 2.5rem;
+}
+
+.profil-content-section .section-heading {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0;
+    position: relative;
+    display: inline-block;
+}
+
+.profil-content-section .divider {
+    height: 3px;
+    width: 70px;
+    background: var(--accent-color);
+    margin: 10px auto 0;
+    border-radius: 3px;
+}
+
+.profil-content-section .sub-section-heading {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 1.5rem 0 1rem;
+    padding-left: 15px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.profil-content-section .text-content {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-medium);
+}
+
+.profil-content-section .text-content p {
+    margin-bottom: 1.2rem;
+}
+
+/* Image containers */
+.image-container {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    transition: transform var(--transition-speed);
+}
+
+.image-container:hover {
+    transform: translateY(-5px);
+}
+
+.content-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    vertical-align: middle;
+    border-radius: 12px;
+    transition: all var(--transition-speed);
+}
+
+.content-image-full {
+    max-width: 85%;
+    margin: 0 auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: var(--shadow-small);
+}
+
+/* Vision & Mission styling */
+.vision-mission-box {
+    padding: 0 0 20px 0;
+}
+
+.vision-mission-box:last-child {
+    padding-bottom: 0;
+}
+
+/* Struktur Organisasi & Tim Pendiri */
+.struktur-img-container {
+    margin: 2rem 0;
+}
+
+/* Card Carousel for team members */
+.anggota-carousel-wrapper {
+    position: relative;
+    margin-top: 3rem;
+}
+
+.anggota-carousel-wrapper .list-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+.anggota-carousel {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px 0 30px;
+    gap: 25px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color-light) transparent;
+}
+
+/* Scrollbar styles */
+.anggota-carousel::-webkit-scrollbar {
+    height: 6px;
+}
+.anggota-carousel::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+    margin: 0 50px;
+}
+.anggota-carousel::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color-light);
+    border-radius: 10px;
+}
+.anggota-carousel::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-color);
+}
+
+/* Team member cards */
+.anggota-card {
+    flex: 0 0 auto;
+    width: 240px;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-small);
+    text-align: center;
+    padding: 25px 20px;
+    transition: all var(--transition-speed);
+    position: relative;
+    overflow: hidden;
+}
+
+.anggota-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--primary-color);
+    opacity: 0;
+    transition: var(--transition-speed);
+}
+
+.anggota-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+}
+
+.anggota-card:hover::before {
+    opacity: 1;
+}
+
+.anggota-card-image-wrapper {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px;
+    background-color: #e9ecef;
+    border: 5px solid var(--bg-light);
+    box-shadow: 0 0 0 2px rgba(78, 115, 223, 0.1);
+    transition: all var(--transition-speed);
+}
+
+.anggota-card:hover .anggota-card-image-wrapper {
+    box-shadow: 0 0 0 4px rgba(78, 115, 223, 0.2);
+}
+
+.anggota-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-speed);
+}
+
+.anggota-card:hover .anggota-card-img {
+    transform: scale(1.05);
+}
+
+.anggota-nama {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0 0 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.anggota-jabatan {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Animation classes */
+.animate-fade-in {
+    animation: fadeIn 1s ease-out;
+}
+
+.animate-fade-in-delayed {
+    animation: fadeIn 1.5s ease-out 0.5s both;
+}
+
+.animate-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s;
+}
+
+.animate-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Empty state styling */
+.empty-state {
+    padding: 60px 20px;
+    text-align: center;
+    color: var(--text-medium);
+}
+
+.empty-state svg {
+    stroke: var(--text-light);
+    width: 70px;
+    height: 70px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .page-hero-section {
+        padding: 100px 0;
+    }
+    
+    .page-hero-section .page-title {
+        font-size: 3rem;
+    }
+    
+    .profil-content-section {
+        padding: 50px 0;
+    }
+    
+    .content-image-full {
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .page-hero-section {
+        padding: 80px 0;
+    }
+    
+    .page-hero-section .page-title {
+        font-size: 2.5rem;
+    }
+    
+    .page-hero-section .page-slogan {
+        font-size: 1.2rem;
+    }
+    
+    .profil-content-section {
+        padding: 40px 0;
+    }
+    
+    .profil-content-section .section-heading {
+        font-size: 2rem;
+    }
+    
+    .profil-content-section .sub-section-heading {
+        font-size: 1.5rem;
+    }
+    
+    .anggota-card {
+        width: 200px;
+        padding: 20px 15px;
+    }
+    
+    .anggota-card-image-wrapper {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .page-hero-section {
+        padding: 60px 0;
+    }
+    
+    .page-hero-section .page-title {
+        font-size: 2rem;
+    }
+    
+    .profil-content-section .section-heading {
+        font-size: 1.8rem;
+    }
+    
+    .anggota-card {
+        width: 180px;
+    }
+    
+    .anggota-card-image-wrapper {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+
+/* public/css/public_profil_detail.css */
+/* Pastikan variabel :root dan global styles sudah ada di atas file ini atau di app.css */
+
+/* ... (CSS dari :root sampai .anggota-jabatan yang sudah kamu berikan tetap sama) ... */
+
+/* Tambahan/Penyesuaian untuk Gambar Bagan/Grup */
+.struktur-img-container { /* Wrapper untuk gambar struktur/tim pendiri */
+    background-color: var(--bg-light); /* Background terang di belakang gambar */
+    padding: 20px; /* Padding di sekitar gambar */
+    border-radius: 12px; /* Rounded corner untuk wrapper */
+    margin-top: 1rem; /* Jarak dari judul section */
+    margin-bottom: 2rem; /* Jarak ke carousel anggota */
+    box-shadow: var(--shadow-small);
+}
+
+.content-image-full { /* Style ini sudah ada, pastikan sesuai */
+    max-width: 100%; /* Agar gambar tidak lebih lebar dari wrapper-nya */
+    /* max-width: 85%; dari kodemu sebelumnya, mungkin bisa jadi 100% jika sudah di dalam wrapper */
+    /* margin: 0 auto; (tidak perlu jika wrapper sudah text-center atau display block) */
+    display: block;
+    border-radius: 8px; /* Radius lebih kecil dari wrapper */
+    /* box-shadow: var(--shadow-small); (sudah di wrapper) */
+}
+
+/* Animasi Section Saat Scroll */
+.animate-section {
+    opacity: 0;
+    transform: translateY(30px); /* Mulai sedikit dari bawah */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animasi Fade-in untuk Hero (jika belum ada atau ingin disesuaikan) */
+.animate-fade-in {
+    animation: fadeInPageHero 1s ease-out 0.3s forwards; /* Forwards agar tetap di state akhir */
+    opacity: 0; /* State awal sebelum animasi */
+}
+
+@keyframes fadeInPageHero {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ... (Responsive adjustments yang sudah ada) ... */

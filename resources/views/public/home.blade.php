@@ -1,28 +1,25 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Panti Asuhan Rumah Harapan</title>
+{{-- resources/views/public/home.blade.php --}}
+@extends('layouts.user') {{-- Menggunakan layout user.blade.php --}}
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+@section('title', 'Beranda') {{-- Contoh judul halaman spesifik --}}
 
-
-</head>
-<body>
-
-    {{-- Include Sections --}}
-    
-    @include('public.partials._navbar')
+@section('content')
+    {{-- Tidak perlu @include navbar dan footer lagi di sini --}}
+    {{-- Cukup include section-section konten halaman ini --}}
     @include('public.partials._hero')
     @include('public.partials._profil')
     @include('public.partials._galeri')
     @include('public.partials._operasional')
-    @include('public.partials._kegiatan')
-    @include('public.partials._kebutuhan')
     @include('public.partials._donasi')
-    @include('public.partials._kontak')
-    {{-- Include section lain jika ada --}}
-</body>
-</html>
+    {{-- Include section lain jika ada untuk halaman Beranda --}}
+@endsection
+
+@push('styles')
+    {{-- CSS spesifik untuk halaman Beranda jika ada --}}
+    {{-- <link rel="stylesheet" href="{{ asset('css/home-specific.css') }}"> --}}
+@endpush
+
+@push('scripts')
+    {{-- JS spesifik untuk halaman Beranda jika ada --}}
+    {{-- <script src="{{ asset('js/home-specific.js') }}"></script> --}}
+@endpush

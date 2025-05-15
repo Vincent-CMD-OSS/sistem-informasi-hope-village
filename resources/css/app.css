@@ -8,11 +8,16 @@
 @import 'sections/_profil.css';
 /* @import 'sections/_galeri.css'; */
 @import 'sections/_donasi.css';
-@import 'sections/_navbar.css';
+@import 'layout/_navbar.css';
+@import 'layout/_footer.css'; 
 /* @import 'sections/_kontak.css'; */
 /* @import 'layout/navbar.css'; */
 /* @import 'layout/footer.css'; */
 /* @import 'base/global.css'; */ /* Jika punya file global terpisah */
+
+@import 'public_profil_detail.css';
+@import 'public_galeri_index.css';
+@import 'public_operasional_index.css';
 
 
 /* --- 2. Global Reset & Base Styles --- */

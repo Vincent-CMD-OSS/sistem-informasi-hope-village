@@ -1,3 +1,4 @@
+{{-- views/layouts/user.blade.php --}}
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -5,39 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} - User Dashboard</title>
+    {{-- Judul Halaman Dinamis --}}
+    <title>@yield('title', config('app.name', 'Laravel') . ' - Panti Asuhan Rumah Harapan')</title>
 
-    <!-- Fonts -->
+    <!-- Fonts (jika menggunakan) -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    {{-- Tambahkan Font Awesome jika belum di-include di app.css/app.js --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
-    <!-- Scripts & Styles (Gunakan Vite atau Mix) -->
-    @vite(['resources/css/app.css', 'resources/js/app.js']) 
-    {{-- Sesuaikan path CSS/JS Anda --}}
 
-    <!-- Bisa tambahkan CSS/JS spesifik user di sini jika perlu -->
-    @stack('styles')
+    <!-- Scripts & Styles (Vite) -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    @stack('styles') {{-- Untuk CSS spesifik per halaman --}}
 </head>
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-        {{-- Include Header User --}}
-        @include('layouts.partials.user._header') 
-        {{-- Atau navigasi jika menyatu dengan header --}}
-        @include('layouts.partials.user._navigation') 
+<body class="font-sans antialiased"> {{-- Kelas Tailwind, sesuaikan jika tidak pakai --}}
+    {{-- Ganti bg-gray-100 jika tidak sesuai dengan desain publikmu --}}
+    <div class="min-h-screen"> {{-- Ganti bg-gray-100 jika tidak sesuai --}}
+
+        {{-- Include Navbar Publik --}}
+        @include('public.partials._navbar') {{-- PASTIKAN PATH INI BENAR --}}
 
         <!-- Page Content -->
         <main>
-            <div class="container mx-auto px-4 py-8"> {{-- Contoh container, sesuaikan --}}
+            {{-- Hapus container bawaan jika section sudah punya container sendiri --}}
+            {{-- <div class="container mx-auto px-4 py-8"> --}}
                 @yield('content') {{-- Konten spesifik halaman akan masuk di sini --}}
-            </div>
+            {{-- </div> --}}
         </main>
 
-        {{-- Include Footer User (jika ada) --}}
-        @include('layouts.partials.user._footer') 
+        {{-- Include Footer Publik --}}
+        @include('public.partials._footer') {{-- PASTIKAN PATH INI BENAR --}}
 
     </div>
 
-    @stack('scripts')
+    @stack('scripts') {{-- Untuk JS spesifik per halaman --}}
 </body>
 </html>

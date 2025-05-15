@@ -1,30 +1,35 @@
 <?php
 
-namespace App\Http\Controllers\Public; // Pastikan namespace benar
+namespace App\Http\Controllers\Public;
 
-use App\Http\Controllers\Controller; // Import base Controller
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\ProfilPanti;
+use App\Models\Galeri;
+use App\Models\IdentitasPanti; // PASTIKAN INI DIIMPORT
 
 class HomeController extends Controller
 {
-    /**
-     * Menampilkan halaman utama publik (beranda).
-     *
-     * @return \Illuminate\Contracts\View\View
-     */
     public function index()
     {
-        // Nanti Anda bisa menambahkan logic untuk mengambil data di sini
-        // $beritaTerbaru = Berita::latest()->take(3)->get();
-        // $jumlahDonasi = Donasi::sum('jumlah');
+        $profilPanti = ProfilPanti::first();
+        $identitasPanti = IdentitasPanti::first(); // Ambil data identitas panti
 
-        // return view('public.home', compact('beritaTerbaru', 'jumlahDonasi'));
+        // Ambil data Galeri
+        $galeriItemsHomepage = Galeri::where('status_publikasi', 'published')
+                                    ->orderBy('tanggal_kegiatan', 'desc')
+                                    ->orderBy('created_at', 'desc')
+                                    ->take(4)
+                                    ->get();
+        $galeriUtama = $galeriItemsHomepage->shift();
+        $galeriListKecil = $galeriItemsHomepage;
 
-        // Untuk sekarang, cukup tampilkan view
-        return view('public.home');
+        return view('public.home', compact(
+            'profilPanti',
+            'identitasPanti', // Kirim data identitas panti ke view
+            'galeriUtama',
+            'galeriListKecil'
+        ));
     }
-
-    // Anda bisa menambahkan method lain di sini untuk halaman publik lainnya
-    // public function tentangKami() { ... }
-    // public function kontak() { ... }
+    // ...
 }

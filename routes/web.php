@@ -15,6 +15,9 @@ use App\Http\Controllers\Admin\IdentitasPantiController;
 
 // BAGIAN CONTROLLER USER
 use App\Http\Controllers\Public\HomeController;
+use App\Http\Controllers\Public\ProfilPantiPublicController;
+use App\Http\Controllers\Public\GaleriPublicController;
+use App\Http\Controllers\Public\OperasionalPublicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,12 +25,12 @@ use App\Http\Controllers\Public\HomeController;
 |--------------------------------------------------------------------------
 */
 
-// Route::get('/', function () {
-//     if (Auth::check()) { // Pastikan Auth sudah di-import
-//         return redirect()->route('admin.dashboard');
-//     }
-//     return redirect()->route('login');
-// });
+Route::get('/admin', function () {
+    if (Auth::check()) { // Pastikan Auth sudah di-import
+        return redirect()->route('admin.dashboard');
+    }
+    return redirect()->route('login');
+});
 
 // Grup Rute untuk Autentikasi Admin
 Route::controller(AuthController::class)->group(function () {
@@ -130,8 +133,6 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
-
-Route::get('/kegiatanpanti', function () {
-    return view('kegiatanpanti');
-});
+Route::get('/profil-panti', [ProfilPantiPublicController::class, 'index'])->name('public.profil_panti.index');
+Route::get('/galeri-kegiatan', [GaleriPublicController::class, 'index'])->name('public.galeri.index');
+Route::get('/jadwal-operasional', [OperasionalPublicController::class, 'index'])->name('public.operasional.index');
