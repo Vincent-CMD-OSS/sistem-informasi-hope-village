@@ -17,7 +17,9 @@
 
 
     <!-- Scripts & Styles (Vite) -->
-    <!-- vite(['resources/css/app.css', 'resources/js/app.js']) -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    
 
     @stack('styles') {{-- Untuk CSS spesifik per halaman --}}
 </head>
