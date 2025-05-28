@@ -1,5 +1,11 @@
 import './bootstrap';
 
+import * as bootstrap from 'bootstrap'; // Impor semua dari Bootstrap
+window.bootstrap = bootstrap; 
+
+
+import './public/galeri-modal.js';
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const navbar = document.getElementById('site-navbar');

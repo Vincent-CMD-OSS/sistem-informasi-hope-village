@@ -15,8 +15,8 @@
 /* @import 'layout/footer.css'; */
 /* @import 'base/global.css'; */ /* Jika punya file global terpisah */
 
-@import 'public_profil_detail.css';
-@import 'public_galeri_index.css';
+/* @import 'public_profil_detail.css'; */
+/* @import 'public_galeri_index.css'; */
 @import 'public_operasional_index.css';
 
 

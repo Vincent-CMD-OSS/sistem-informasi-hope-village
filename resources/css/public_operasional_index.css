@@ -181,9 +181,9 @@
 }
 
 /* Animasi */
-.animate-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+/* .animate-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .animate-section.is-visible { opacity: 1; transform: translateY(0); }
-.animate-fade-in { animation: fadeInPageHero 1s ease-out 0.3s forwards; opacity: 0; }
+.animate-fade-in { animation: fadeInPageHero 1s ease-out 0.3s forwards; opacity: 0; } */
 /* @keyframes fadeInPageHero { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; translateY(0); } } */
 
 /* Responsive */

@@ -22,6 +22,12 @@
                  <li class="nav-item">
                     <a class="nav-link" href="{{ route('public.operasional.index') }}">Operasional</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('public.kebutuhan.index') }}">Kebutuhan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('public.donasi.index') }}">Donasi</a>
+                </li>
                 {{-- Tambahkan menu lain jika ada, misal: Kegiatan, Kebutuhan --}}
                 <li class="nav-item">
                     {{-- Nanti akan diganti route ke halaman login admin --}}

@@ -18,6 +18,9 @@ use App\Http\Controllers\Public\HomeController;
 use App\Http\Controllers\Public\ProfilPantiPublicController;
 use App\Http\Controllers\Public\GaleriPublicController;
 use App\Http\Controllers\Public\OperasionalPublicController;
+use App\Http\Controllers\Public\DonasiPublicController;
+use App\Http\Controllers\Public\KebutuhanPublicController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -135,4 +138,19 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/profil-panti', [ProfilPantiPublicController::class, 'index'])->name('public.profil_panti.index');
 Route::get('/galeri-kegiatan', [GaleriPublicController::class, 'index'])->name('public.galeri.index');
+// Route::get('/galeri-kegiatan/{galeri_item_id}/detail', [GaleriPublicController::class, 'showDetailJson'])->name('public.galeri.show.json');
+
+Route::get('/galeri-kegiatan/{galeri}', [GaleriPublicController::class, 'show'])->name('public.galeri.show'); 
+
 Route::get('/jadwal-operasional', [OperasionalPublicController::class, 'index'])->name('public.operasional.index');
+
+Route::get('/galeri-kegiatan', [GaleriPublicController::class, 'index'])->name('public.galeri.index');
+Route::get('/galeri-kegiatan/{identifier}', [GaleriPublicController::class, 'show'])->name('public.galeri.show');
+
+Route::get('/operasional', [OperasionalPublicController::class, 'index'])->name('public.operasional.index');
+
+Route::get('/donasi', [DonasiPublicController::class, 'index'])->name('public.donasi.index');
+Route::post('/donasi/kirim-konfirmasi', [DonasiPublicController::class, 'kirimKonfirmasiWA'])->name('public.donasi.kirim'); // Untuk submit form
+
+Route::get('/kebutuhan', [KebutuhanPublicController::class, 'index'])->name('public.kebutuhan.index');
+Route::get('/kebutuhan/{slug}', [KebutuhanPublicController::class, 'show'])->name('public.kebutuhan.show');

@@ -15,7 +15,7 @@ class Galeri extends Model
      *
      * @var string
      */
-    protected $table = 'galeri';
+    protected $table = 'galeri'; // Ini sudah benar
 
     /**
      * Atribut yang dapat diisi secara massal (mass assignable).
@@ -30,7 +30,8 @@ class Galeri extends Model
         'gambar',
         'slug',
         'status_publikasi',
-        // 'is_published', // Jika menggunakan boolean
+        // 'user_id', // Jika ada relasi ke user yang membuat, tambahkan di sini
+        // created_at dan updated_at di-handle otomatis oleh Eloquent, tidak perlu di fillable
     ];
 
     /**
@@ -39,8 +40,12 @@ class Galeri extends Model
      * @var array
      */
     protected $casts = [
-        'tanggal_kegiatan' => 'date',
-        // 'is_published' => 'boolean', // Jika menggunakan boolean
+        'tanggal_kegiatan' => 'date', // Ini sudah benar
+        // 'created_at' => 'datetime', // Tidak perlu jika ingin default Carbon instance
+        // 'updated_at' => 'datetime', // Tidak perlu jika ingin default Carbon instance
+        // Jika kamu secara spesifik ingin format tertentu saat serialisasi ke array/JSON,
+        // kamu bisa menggunakan custom cast atau accessor, TAPI untuk operasi Carbon
+        // seperti ->toIso8601String(), default casting sudah cukup.
     ];
 
     /**
@@ -52,17 +57,18 @@ class Galeri extends Model
         parent::boot();
 
         static::creating(function ($galeri) {
-            if (empty($galeri->slug)) {
+            if (empty($galeri->slug) && !empty($galeri->judul)) { // Pastikan judul tidak kosong juga
                 $galeri->slug = static::generateUniqueSlug($galeri->judul);
             }
         });
 
         static::updating(function ($galeri) {
-            // Hanya update slug jika judul berubah dan slug tidak diisi manual
-            // atau jika slug belum ada (kasus data lama)
-            if ($galeri->isDirty('judul') && empty($galeri->getOriginal('slug'))) {
+            // Hanya update slug jika judul berubah DAN slug tidak diisi manual oleh user
+            if ($galeri->isDirty('judul') && !$galeri->isDirty('slug') && !empty($galeri->judul)) {
                  $galeri->slug = static::generateUniqueSlug($galeri->judul, $galeri->id);
-            } elseif (empty($galeri->slug) && !empty($galeri->judul)) { // Jika slug kosong tapi judul ada
+            }
+            // Jika slug dikosongkan manual oleh user tapi judul ada, generate ulang
+            elseif (empty($galeri->slug) && !empty($galeri->judul)) {
                  $galeri->slug = static::generateUniqueSlug($galeri->judul, $galeri->id);
             }
         });
@@ -81,7 +87,6 @@ class Galeri extends Model
         $originalSlug = $slug;
         $count = 1;
 
-        // Loop untuk memastikan slug unik
         while (static::slugExists($slug, $excludeId)) {
             $slug = $originalSlug . '-' . $count++;
         }

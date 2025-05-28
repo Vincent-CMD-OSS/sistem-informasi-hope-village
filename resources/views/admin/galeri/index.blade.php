@@ -99,7 +99,7 @@
                                         <td>
                                             @if($item->gambar)
                                                 <img src="{{ Storage::url($item->gambar) }}" alt="{{ $item->judul }}" class="img-thumbnail-small">
-                                            @else
+                                            @else=
                                                 <span class="text-muted">-</span>
                                             @endif
                                         </td>

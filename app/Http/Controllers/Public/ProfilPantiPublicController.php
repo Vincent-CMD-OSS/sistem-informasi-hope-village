@@ -4,27 +4,41 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use App\Models\ProfilPanti;
-use App\Models\StrukturOrganisasiAnggota; // Jika ingin menampilkan daftar anggota
-use App\Models\TimPendiriAnggota;       // Jika ingin menampilkan daftar anggota
+use App\Models\IdentitasPanti;
+
 use Illuminate\Http\Request;
 
 class ProfilPantiPublicController extends Controller
 {
-    public function index()
+    public function index() // Atau mungkin lebih deskriptif seperti showDetail()
     {
-        $profilPanti = ProfilPanti::first(); // Ambil data profil utama
+        // 1. Gunakan method getData() yang sudah kamu buat di model ProfilPanti
+        //    Ini lebih konsisten dan jika ada logika default (seperti create jika belum ada)
+        //    bisa terpusat di sana.
+        $profilPanti = ProfilPanti::getData();
+        $identitasPanti = IdentitasPanti::first(); // Atau cara kamu mengambil data identitas panti
 
+        // 2. Jika $profilPanti null (belum ada data sama sekali), kita tetap perlu mengirim variabel
+        //    ke view agar tidak error.
         if (!$profilPanti) {
-            // Handle jika data profil panti tidak ditemukan, bisa redirect ke homepage atau tampilkan pesan
-            // Untuk sekarang, kita biarkan view yang menghandle jika $profilPanti null
+            return view('public.profil_panti_detail', [
+                'profilPanti' => null,
+                'identitasPanti' => $identitasPanti, // Untuk title dll.
+                'strukturAnggota' => collect(), // Kirim collection kosong
+                'timPendiri' => collect(),      // Kirim collection kosong
+            ]);
         }
 
-        // Ambil data anggota struktur dan tim pendiri jika ingin ditampilkan
-        $strukturAnggota = $profilPanti ? StrukturOrganisasiAnggota::where('profil_panti_id', $profilPanti->id)->orderBy('urutan', 'asc')->get() : collect();
-        $timPendiri = $profilPanti ? TimPendiriAnggota::where('profil_panti_id', $profilPanti->id)->orderBy('urutan', 'asc')->get() : collect();
+        // 3. Ambil data relasi langsung dari objek $profilPanti. Ini lebih 'Eloquent-way'.
+        //    Pastikan relasi 'strukturOrganisasiAnggota' dan 'timPendiriAnggota'
+        //    sudah didefinisikan di model App\Models\ProfilPanti.php
+        $strukturAnggota = $profilPanti->strukturOrganisasiAnggota()->orderBy('urutan', 'asc')->get();
+        $timPendiri = $profilPanti->timPendiriAnggota()->orderBy('urutan', 'asc')->get();
 
+        // 4. Variabel $identitasPanti juga perlu dikirim ke view jika digunakan (misal untuk title)
         return view('public.profil_panti_detail', compact(
             'profilPanti',
+            'identitasPanti', // Tambahkan ini
             'strukturAnggota',
             'timPendiri'
         ));

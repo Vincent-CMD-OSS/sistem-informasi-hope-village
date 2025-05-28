@@ -1,4 +1,4 @@
-/* public/css/public_galeri_index.css */
+public/css/public_galeri_index.css
 /* Variabel warna bisa diambil dari :root di app.css atau didefinisikan di sini jika terpisah */
 
 /* Hero Section untuk Halaman Galeri */
@@ -123,7 +123,7 @@
 }
 
 /* Animasi untuk Card */
-.galeri-card.animate-section {
+/* .galeri-card.animate-section {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -131,7 +131,7 @@
 .galeri-card.animate-section.is-visible {
     opacity: 1;
     transform: translateY(0);
-}
+} */
 
 /* Empty State (sama seperti di profil_detail.css, bisa diglobalisasi) */
 .empty-state { padding: 60px 20px; text-align: center; color: var(--text-medium); }

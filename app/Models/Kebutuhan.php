@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\PenerimaanDanaKebutuhan;
 use Illuminate\Support\Str;
 
 class Kebutuhan extends Model
@@ -142,5 +143,16 @@ class Kebutuhan extends Model
             $query->where('id', '!=', $excludeId);
         }
         return $query->exists();
+    }
+
+    public function penerimaanDana()
+    {
+        return $this->hasMany(PenerimaanDanaKebutuhan::class, 'kebutuhan_id');
+    }
+
+    public function getDanaTerkumpulAttribute()
+    {
+        // Menghitung total dana terkumpul dari relasi penerimaanDana
+        return $this->penerimaanDana()->sum('jumlah_dana_diterima');
     }
 }
